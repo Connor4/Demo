@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.connor.recyclerview.normal.NormalUseActivity;
 import com.connor.recyclerview.refresh.RefreshActivity;
 import com.connor.recyclerviewrefreshdemo.R;
 
@@ -16,12 +17,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        findViewById(R.id.normal_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NormalUseActivity.class));
+            }
+        });
+
         findViewById(R.id.refresh_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RefreshActivity.class));
             }
         });
+
+
     }
 
 
