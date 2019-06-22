@@ -1,7 +1,7 @@
 package com.connor.recyclerview.refresh;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -15,7 +15,7 @@ import java.util.TimerTask;
 /**
  * Connor on  2019-06-21
  */
-public class RefreshActivity extends AppCompatActivity {
+public class RefreshActivity extends Activity {
     private RecyclerView recyclerView;
     private LoadMoreAdapter loadMoreAdapter;
     private List<String> dataList = new ArrayList<>();
