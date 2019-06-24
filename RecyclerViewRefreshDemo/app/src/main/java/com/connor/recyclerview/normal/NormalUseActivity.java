@@ -1,7 +1,7 @@
 package com.connor.recyclerview.normal;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Connor on  2019-06-21
  */
-public class NormalUseActivity extends AppCompatActivity {
+public class NormalUseActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RvAdapter mRvAdapter;
     private List<String> mData = new ArrayList<>();
@@ -26,7 +26,7 @@ public class NormalUseActivity extends AppCompatActivity {
         setContentView(R.layout.normal_main);
         mRecyclerView = findViewById(R.id.rv);
         for (int i = 0; i < 10; i++) {
-            mData.add(""+i);
+            mData.add("" + i);
         }
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);

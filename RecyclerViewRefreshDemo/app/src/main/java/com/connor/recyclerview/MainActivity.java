@@ -1,15 +1,15 @@
 package com.connor.recyclerview;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.connor.recyclerview.normal.NormalUseActivity;
 import com.connor.recyclerview.refresh.RefreshActivity;
 import com.connor.recyclerviewrefreshdemo.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
 
     @Override
@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
-
 
 }
