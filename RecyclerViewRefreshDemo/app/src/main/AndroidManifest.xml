@@ -21,6 +21,7 @@
         <activity android:name="com.connor.recyclerview.refresh.RefreshActivity" />
         <activity android:name="com.connor.recyclerview.normal.NormalUseActivity" />
         <activity android:name="com.connor.recyclerview.glide.GlideActivity" />
+        <activity android:name="com.connor.recyclerview.eventbus.EventBusActivity" />
     </application>
 
 </manifest>
