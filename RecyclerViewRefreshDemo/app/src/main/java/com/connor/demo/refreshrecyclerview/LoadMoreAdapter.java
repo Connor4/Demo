@@ -1,4 +1,4 @@
-package com.connor.recyclerview.refresh;
+package com.connor.demo.refreshrecyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;

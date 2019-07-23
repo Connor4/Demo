@@ -1,4 +1,4 @@
-package com.connor.recyclerview.normal;
+package com.connor.demo.normalrecyclerview;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

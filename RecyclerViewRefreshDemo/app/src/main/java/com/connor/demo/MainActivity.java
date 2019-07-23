@@ -1,4 +1,4 @@
-package com.connor.recyclerview;
+package com.connor.demo;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.connor.recyclerview.glide.GlideActivity;
-import com.connor.recyclerview.eventbus.MessageEvent;
-import com.connor.recyclerview.normal.NormalUseActivity;
-import com.connor.recyclerview.refresh.RefreshActivity;
+import com.connor.demo.glide.GlideActivity;
+import com.connor.demo.eventbus.MessageEvent;
+import com.connor.demo.normalrecyclerview.NormalUseActivity;
+import com.connor.demo.refreshrecyclerview.RefreshActivity;
 import com.connor.recyclerviewrefreshdemo.R;
 
 import org.greenrobot.eventbus.EventBus;

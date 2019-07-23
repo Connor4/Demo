@@ -11,17 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.connor.recyclerview.MainActivity">
+        <activity android:name="com.connor.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.connor.recyclerview.refresh.RefreshActivity" />
-        <activity android:name="com.connor.recyclerview.normal.NormalUseActivity" />
-        <activity android:name="com.connor.recyclerview.glide.GlideActivity" />
-        <activity android:name="com.connor.recyclerview.eventbus.EventBusActivity" />
+        <activity android:name="com.connor.demo.refreshrecyclerview.RefreshActivity" />
+        <activity android:name="com.connor.demo.normalrecyclerview.NormalUseActivity" />
+        <activity android:name="com.connor.demo.glide.GlideActivity" />
+        <activity android:name="com.connor.demo.eventbus.EventBusActivity" />
     </application>
 
 </manifest>

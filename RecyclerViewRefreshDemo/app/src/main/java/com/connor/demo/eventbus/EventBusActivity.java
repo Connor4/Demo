@@ -1,4 +1,4 @@
-package com.connor.recyclerview.eventbus;
+package com.connor.demo.eventbus;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

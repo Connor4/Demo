@@ -1,4 +1,4 @@
-package com.connor.recyclerview.glide;
+package com.connor.demo.glide;
 
 import android.app.Activity;
 import android.os.Bundle;
