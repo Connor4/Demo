@@ -1,16 +1,17 @@
 package com.connor.demo.eventbus;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
 
 import com.connor.recyclerviewrefreshdemo.R;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class EventBusActivity extends AppCompatActivity {
+public class EventBusActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
