@@ -8,18 +8,24 @@
         android:id="@+id/normal_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="normal"/>
+        android:text="normal" />
 
     <Button
         android:id="@+id/refresh_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="refresh"/>
+        android:text="refresh" />
 
     <Button
         android:id="@+id/glide_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="glide"/>
+        android:text="glide" />
+
+    <Button
+        android:id="@+id/mvp_activity_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mvp" />
 
 </LinearLayout>
