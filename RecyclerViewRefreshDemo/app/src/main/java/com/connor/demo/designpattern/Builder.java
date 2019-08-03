@@ -1,5 +1,11 @@
 package com.connor.demo.designpattern;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+
+import com.connor.recyclerviewrefreshdemo.R;
+
 public class Builder {
 
     class Product {
@@ -75,4 +81,20 @@ public class Builder {
         Product result = builder.getProduct();
     }
 
+    // android中使用例子
+    private void showDialog(Context context) {
+        AlertDialog dialog = new AlertDialog.Builder(context)
+                .setIcon(R.drawable.progressbar_refresh)
+                .setTitle("Title")
+                .setMessage("Message")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
+                }).create();
+        dialog.show();
+    }
 }
