@@ -9,8 +9,8 @@ import android.view.View;
 import com.connor.demo.glide.GlideActivity;
 import com.connor.demo.eventbus.MessageEvent;
 import com.connor.demo.mvp.MvpActivity;
-import com.connor.demo.normalrecyclerview.NormalUseActivity;
-import com.connor.demo.refreshrecyclerview.RefreshActivity;
+import com.connor.demo.recyclerView.normalrecyclerview.nomalRecyclerView.NormalUseActivity;
+import com.connor.demo.recyclerView.normalrecyclerview.refreshrecyclerview.RefreshActivity;
 import com.connor.recyclerviewrefreshdemo.R;
 
 import org.greenrobot.eventbus.EventBus;

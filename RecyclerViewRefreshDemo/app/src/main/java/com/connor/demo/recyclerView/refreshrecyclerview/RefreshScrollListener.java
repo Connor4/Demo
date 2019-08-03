@@ -1,4 +1,4 @@
-package com.connor.demo.refreshrecyclerview;
+package com.connor.demo.recyclerView.normalrecyclerview.refreshrecyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;

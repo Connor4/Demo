@@ -1,4 +1,4 @@
-package com.connor.demo.refreshrecyclerview;
+package com.connor.demo.recyclerView.normalrecyclerview.refreshrecyclerview;
 
 import android.app.Activity;
 import android.os.Bundle;

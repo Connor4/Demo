@@ -1,4 +1,4 @@
-package com.connor.demo.normalrecyclerview;
+package com.connor.demo.recyclerView.normalrecyclerview.nomalRecyclerView;
 
 import android.app.Activity;
 import android.os.Bundle;
