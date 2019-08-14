@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.connor.demo.recyclerView.normalrecyclerview.refreshrecyclerview.RefreshActivity" />
-        <activity android:name="com.connor.demo.recyclerView.normalrecyclerview.nomalRecyclerView.NormalUseActivity" />
+        <activity android:name="com.connor.demo.recyclerView.refreshRecyclerview.RefreshActivity" />
+        <activity android:name="com.connor.demo.recyclerView.normalRecyclerView.NormalUseActivity" />
         <activity android:name="com.connor.demo.glide.GlideActivity" />
         <activity android:name="com.connor.demo.eventbus.EventBusActivity" />
         <activity android:name="com.connor.demo.mvp.MvpActivity" />
