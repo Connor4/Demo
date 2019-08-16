@@ -24,6 +24,7 @@
         <activity android:name="com.connor.demo.glide.GlideActivity" />
         <activity android:name="com.connor.demo.eventbus.EventBusActivity" />
         <activity android:name="com.connor.demo.mvp.MvpActivity" />
+        <activity android:name="com.connor.demo.valueanimator.AnimatorActivity" />
     </application>
 
 </manifest>

@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
         /* Do something */
-        Log.d("TAG","receive event from EventBusActivity");
+        Log.d("TAG", "receive event from EventBusActivity");
     }
 
 }
