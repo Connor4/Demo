@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.connor.demo.glide.GlideActivity;
 import com.connor.demo.eventbus.MessageEvent;
+import com.connor.demo.glide.GlideActivity;
 import com.connor.demo.mvp.MvpActivity;
 import com.connor.demo.recyclerView.normalRecyclerView.NormalUseActivity;
 import com.connor.demo.recyclerView.refreshRecyclerview.RefreshActivity;
