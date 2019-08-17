@@ -43,5 +43,6 @@ public class AnimatorActivity extends Activity {
 
     private void objectAniamtor() {
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mAnimateTarget, "alpha", 0f, 1f);
+        objectAnimator.start();
     }
 }
