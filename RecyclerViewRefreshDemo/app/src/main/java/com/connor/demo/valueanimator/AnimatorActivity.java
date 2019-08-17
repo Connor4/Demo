@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import com.connor.recyclerviewrefreshdemo.R;
 
 public class AnimatorActivity extends Activity {
+    private final static String TAG = "dzb";
     private TextView mAnimateTarget;
 
     @Override
@@ -24,6 +26,13 @@ public class AnimatorActivity extends Activity {
         // 1 直接计算500ms，0f到1f的值，来进行动画
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(0f, 1f);
         valueAnimator.setDuration(500);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int curValue = (int)animation.getAnimatedValue();
+                Log.d(TAG,"curValue:"+curValue);
+            }
+        });
         valueAnimator.start();
 
         // 2 使用估值器计算值
