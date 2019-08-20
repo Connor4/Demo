@@ -12,6 +12,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+/**
+ * 一个太极图
+ * 可以根据View的颜色区分点击
+ * 实现方式 region
+ */
 public class TaijiView extends View {
     //黑色区域
     private Paint mPaint;
