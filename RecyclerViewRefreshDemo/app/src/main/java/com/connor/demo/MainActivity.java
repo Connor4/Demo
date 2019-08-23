@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.connor.demo.RxJava.RxJavaActivity;
 import com.connor.demo.eventbus.MessageEvent;
 import com.connor.demo.glide.GlideActivity;
 import com.connor.demo.mvp.MvpActivity;
@@ -49,6 +50,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, MvpActivity.class));
+            }
+        });
+
+        findViewById(R.id.rx_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RxJavaActivity.class));
             }
         });
 

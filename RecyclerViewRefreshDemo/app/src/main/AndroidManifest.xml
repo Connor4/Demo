@@ -25,6 +25,7 @@
         <activity android:name="com.connor.demo.eventbus.EventBusActivity" />
         <activity android:name="com.connor.demo.mvp.MvpActivity" />
         <activity android:name="com.connor.demo.valueanimator.AnimatorActivity" />
+        <activity android:name="com.connor.demo.RxJava.RxJavaActivity" />
     </application>
 
 </manifest>
