@@ -9,7 +9,7 @@ public class PluginActivity extends Activity implements IPlugin {
 
     @Override
     public void attach(Activity proxyActivity) {
-
+        mProxyActivity = proxyActivity;
     }
 
     @Override
