@@ -1,19 +1,35 @@
-apply plugin: 'com.android.application'
+if (loginRunAlone.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion compile_sdk_version.toInteger()
     buildToolsVersion "29.0.0"
 
-
     defaultConfig {
-        applicationId "com.example.logincomponent"
-        minSdkVersion 21
-        targetSdkVersion 29
+        if (loginRunAlone.toBoolean()) {
+            applicationId "com.example.logincomponent"
+        }
+        minSdkVersion min_sdk_version.toInteger()
+        targetSdkVersion target_sdk_version.toInteger()
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+    }
+
+    sourceSets{
+        main {
+            // 独立运行与集成时使用不同AndroidManifest文件
+            if (loginRunAlone.toBoolean()) {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
     }
 
     buildTypes {
@@ -33,4 +49,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(path: ':componentlib')
 }
