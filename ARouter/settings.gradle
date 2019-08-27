@@ -1,1 +1,1 @@
-include ':app', ':login', ':member', ':arouter2'
+include ':app', ':login', ':member', ':arouter2', ':annotation', ':annotation_compiler'
