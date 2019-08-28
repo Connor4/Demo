@@ -47,6 +47,12 @@ public class ARouter {
         }
     }
 
+    /**
+     * 添加组件的activity进入路由
+     *
+     * @param path  组件路径
+     * @param clazz activity类名
+     */
     public void putActivity(String path, Class<? extends Activity> clazz) {
         if (path != null && clazz != null) {
             activityMap.put(path, clazz);
@@ -70,7 +76,7 @@ public class ARouter {
     private List<String> getClassName(String packageName) {
         // 创建一个class对象的集合
         List<String> classList = new ArrayList<>();
-        String path = null;
+        String path;
         try {
             // 通过包管理器 获取到应用信息类然后获取apk的完整路径
             path = mContext.getPackageManager().getApplicationInfo(mContext.getPackageName(), 0).sourceDir;
