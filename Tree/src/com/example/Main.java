@@ -40,9 +40,9 @@ public class Main {
 //        printPreOrderTree(nodeF);
 //        printPostOrderTree(nodeF);
         printLayerTravelTree(nodeF);
-        TreeNode root = flatten(nodeF);
-        printLayerTravelTree(root);
-//        printTree(nodeF);
+        TreeNode root = reverseBinaryTree(nodeF);
+//        TreeNode root = flatten(nodeF);
+        printTree(nodeF);
     }
 
     /**
@@ -112,6 +112,29 @@ public class Main {
 
     /**
      * 翻转二叉树
+     * @param root 根节点
+     * @return tree
+     */
+    private static TreeNode reverseBinaryTree(TreeNode root){
+        //先处理base case，当root ==null 时，什么都不需要做,返回空指针
+        if(root == null){
+            return null;
+        }
+        else{
+            //把左子树翻转
+            TreeNode left = reverseBinaryTree(root.getLeftNode());
+            //把右子树翻转
+            TreeNode right = reverseBinaryTree(root.getRightNode());
+            //把左右子树分别赋值给root节点，但是是翻转过来的顺序
+            root.setLeftNode(right);
+            root.setRightNode(left);
+            //返回根节点
+            return root;
+        }
+    }
+
+    /**
+     * 平铺二叉树
      *
      * @param root 根节点
      * @return 翻转结果
