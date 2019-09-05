@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Main {
 
@@ -37,12 +38,20 @@ public class Main {
         nodeI.setLeftNode(nodeH);
 
 //        printInOrderTree(nodeF);
+//        printInOrderTree2(nodeF);
+
 //        printPreOrderTree(nodeF);
-//        printPostOrderTree(nodeF);
-        printLayerTravelTree(nodeF);
-        TreeNode root = reverseBinaryTree(nodeF);
+//        printPreOrderTree2(nodeF);
+
+        printPostOrderTree(nodeF);
+        printPostOrderTree2(nodeF);
+
+//        printLayerTravelTree(nodeF);
+//        TreeNode root = reverseBinaryTree(nodeF);
 //        TreeNode root = flatten(nodeF);
-        printTree(nodeF);
+//        printTree(nodeF);
+
+
     }
 
     /**
@@ -59,6 +68,23 @@ public class Main {
         printInOrderTree(root.getRightNode());
     }
 
+    private static void printInOrderTree2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.getLeftNode();
+            }
+            cur = stack.pop();
+            System.out.println(cur.getValue());
+            cur = cur.getRightNode();
+        }
+    }
+
     /**
      * 前序遍历
      *
@@ -73,6 +99,24 @@ public class Main {
         printPreOrderTree(root.getRightNode());
     }
 
+    private static void printPreOrderTree2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                System.out.println(cur.getValue());
+                stack.push(cur);
+                cur = cur.getLeftNode();
+            }
+            cur = stack.pop();
+            cur = cur.getRightNode();
+        }
+
+    }
+
     /**
      * 后续遍历
      *
@@ -85,6 +129,30 @@ public class Main {
         printPostOrderTree(root.getLeftNode());
         printPostOrderTree(root.getRightNode());
         System.out.println(root.getValue());
+    }
+
+    private static void printPostOrderTree2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        TreeNode last = null;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.getLeftNode();
+            }
+            cur = stack.peek();
+            if (cur.getRightNode() == null || cur.getRightNode() == last) {
+                System.out.println(cur.getValue());
+                stack.pop();
+                last = cur;
+                cur = null;
+            } else {
+                cur = cur.getRightNode();
+            }
+        }
     }
 
     /**
@@ -112,15 +180,15 @@ public class Main {
 
     /**
      * 翻转二叉树
+     *
      * @param root 根节点
      * @return tree
      */
-    private static TreeNode reverseBinaryTree(TreeNode root){
+    private static TreeNode reverseBinaryTree(TreeNode root) {
         //先处理base case，当root ==null 时，什么都不需要做,返回空指针
-        if(root == null){
+        if (root == null) {
             return null;
-        }
-        else{
+        } else {
             //把左子树翻转
             TreeNode left = reverseBinaryTree(root.getLeftNode());
             //把右子树翻转
