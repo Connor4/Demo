@@ -69,7 +69,7 @@ public class FragmentShowHideDemoActivity extends Activity implements RadioGroup
                 }
                 break;
         }
-        ft.commit();
+        ft.commitAllowingStateLoss();
     }
 
     // 当fragment已被实例化，相当于发生过切换，就隐藏起来
