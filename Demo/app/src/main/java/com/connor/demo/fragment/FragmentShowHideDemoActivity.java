@@ -1,30 +1,48 @@
 package com.connor.demo.fragment;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import androidx.annotation.Nullable;
 
 import com.connor.demo.R;
 
-public class FragmentShowHideDemoActivity extends Activity implements RadioGroup.OnCheckedChangeListener{
+/**
+ * 会发生fragment重叠现象
+ * 当系统内存不足，Fragment 的宿主 Activity 回收的时候，Fragment 的实例并没有随之被回收。
+ * Activity 被系统回收时，会主动调用 onSaveInstance() 方法来保存视图层（View Hierarchy），
+ * 所以当 Activity 通过导航再次被重建时，之前被实例化过的 Fragment 依然会出现在 Activity 中，
+ * 此时的 FragmentTransaction 中的相当于又再次 add 了 fragment 进去的，hide()和show()方法对之前保存的fragment已经失效了，所以就出现了重叠。
+ *
+ * 解决方案：
+ * 1.
+ * protected  void  onSaveInstanceState(Bundle outState) {
+ * //如果用以下这种做法则不保存状态，再次进来的话会显示默认tab
+ * //总是执行这句代码来调用父类去保存视图层的状态
+ * //super.onSaveInstanceState(outState);
+ * }
+ *
+ * 2.
+ * 在manifest中声明 android:configChanges="keyboardHidden|orientation|screenSize">
+ * 这样就不会走activity的生命周期
+ */
+public class FragmentShowHideDemoActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener{
     private Fragment1 mFragment1;
     private Fragment2 mFragment2;
     private Fragment3 mFragment3;
     private Fragment4 mFragment4;
     private FragmentManager mFragmentManager;
-    private RadioGroup mRadioGroup;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main);
-        mFragmentManager = getFragmentManager();
-        mRadioGroup = findViewById(R.id.fragment_rg);
-        mRadioGroup.setOnCheckedChangeListener(this);
+        mFragmentManager = getSupportFragmentManager();
+        RadioGroup radioGroup = findViewById(R.id.fragment_rg);
+        radioGroup.setOnCheckedChangeListener(this);
         showFragment(1);
     }
 

@@ -27,6 +27,7 @@
         <activity android:name="com.connor.demo.valueanimator.AnimatorActivity" />
         <activity android:name="com.connor.demo.RxJava.RxJavaActivity" />
         <activity android:name=".fragment.FragmentShowHideDemoActivity" />
+        <activity android:name=".fragment.ViewpagerFragmentActivity" />
     </application>
 
 </manifest>

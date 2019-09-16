@@ -9,6 +9,7 @@ import android.view.View;
 import com.connor.demo.RxJava.RxJavaActivity;
 import com.connor.demo.eventbus.MessageEvent;
 import com.connor.demo.fragment.FragmentShowHideDemoActivity;
+import com.connor.demo.fragment.ViewpagerFragmentActivity;
 import com.connor.demo.glide.GlideActivity;
 import com.connor.demo.mvp.MvpActivity;
 import com.connor.demo.recyclerView.normalRecyclerView.NormalUseActivity;
@@ -64,6 +65,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, FragmentShowHideDemoActivity.class));
+            }
+        });
+
+        findViewById(R.id.fragment_viewpager_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ViewpagerFragmentActivity.class));
             }
         });
 
