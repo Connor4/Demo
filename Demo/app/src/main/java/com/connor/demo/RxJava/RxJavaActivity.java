@@ -14,6 +14,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class RxJavaActivity extends Activity {
     private static final String TAG = "dzb";
@@ -41,7 +42,9 @@ public class RxJavaActivity extends Activity {
                 }
                 e.onComplete();
             }
-        }).subscribe(new Observer<Integer>() {
+        })  .subscribeOn(Schedulers.io()) // 订阅者线程
+            .observeOn(AndroidSchedulers.mainThread()) // 观察者线程
+            .subscribe(new Observer<Integer>() {
             private Disposable mDisposable;
 
             @Override
