@@ -1,0 +1,142 @@
+package com.bzl.basever.ui.adapter.autocontrol;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bzl.baseagv.bean.PathAuto;
+import com.bzl.basever.R;
+import com.bzl.basever.utils.ContainerUtils;
+
+import java.util.List;
+
+/**
+ * {@link com.bzl.basever.ui.fragment.wallpave.AutoControlFragment}
+ * 路线适配器
+ * <p>
+ * Created by dzb 2019/12/5
+ */
+public class AutoControlPathAdapter extends RecyclerView.Adapter<AutoControlPathAdapter.AutoControlPathViewHolder> {
+    private List<PathAuto> mData;
+    private LayoutInflater mLayoutInflater;
+    private onItemClickListener mListener;
+    private PathAuto mLastSelectBean;
+
+    public AutoControlPathAdapter(@NonNull List<PathAuto> data, Context context) {
+        mData = data;
+        mLayoutInflater = LayoutInflater.from(context);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        mListener = listener;
+    }
+
+    /**
+     * 选中第一个
+     */
+    public void setFirstItemCheck() {
+        if (ContainerUtils.isListEmpty(mData)) {
+            return;
+        }
+        PathAuto pathAuto = mData.get(0);
+        pathAuto.setSelect(true);
+        updateItem(pathAuto, null);
+        if (mListener != null) {
+            mListener.onItemClick(0);
+        }
+    }
+
+    /**
+     * 刷新选中item
+     */
+    public void updateItem(PathAuto currentBean, PathAuto lastBean) {
+        if (lastBean != null) {
+            lastBean.setSelect(false);
+            int lastPosition = mData.indexOf(lastBean);
+            notifyItemChanged(lastPosition);
+        }
+        if (currentBean != null) {
+            currentBean.setSelect(true);
+            int currentPosition = mData.indexOf(currentBean);
+            notifyItemChanged(currentPosition);
+        }
+        mLastSelectBean = currentBean;
+    }
+
+    /**
+     * 刷新列表数据
+     */
+    public void setData(@NonNull List<PathAuto> data) {
+        if (ContainerUtils.isListEmpty(data)) {
+            return;
+        }
+        mData = data;
+        mLastSelectBean = null;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public AutoControlPathViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AutoControlPathViewHolder(mLayoutInflater.inflate(R.layout.item_wallpave_auto_path, parent, false));
+    }
+
+//    @Override
+//    public void onBindViewHolder(@NonNull AutoControlPathViewHolder holder, int position, @NonNull List<Object> payloads) {
+//        super.onBindViewHolder(holder, position, payloads);
+//        if (ContainerUtils.isListEmpty(payloads)) {
+//            onBindViewHolder(holder, position);
+//        } else {
+//
+//        }
+//    }
+
+    @Override
+    public void onBindViewHolder(@NonNull AutoControlPathViewHolder holder, int position) {
+        PathAuto bean = mData.get(position);
+        if (bean == null) {
+            return;
+        }
+        holder.pathTv.setText("路线" + (position + 1));
+        if (bean.isSelect()) {
+            holder.pathTv.setBackgroundResource(R.drawable.base_path_select);
+        } else {
+            holder.pathTv.setBackgroundResource(R.drawable.base_path_def);
+        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bean == mLastSelectBean) {
+                    return;
+                }
+                updateItem(bean, mLastSelectBean);
+                if (mListener != null) {
+                    mListener.onItemClick(position);
+                }
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return mData.isEmpty() ? 0 : mData.size();
+    }
+
+    public interface onItemClickListener {
+        void onItemClick(int position);
+    }
+
+    class AutoControlPathViewHolder extends RecyclerView.ViewHolder {
+        TextView pathTv;
+
+        AutoControlPathViewHolder(@NonNull View itemView) {
+            super(itemView);
+            pathTv = itemView.findViewById(R.id.tv_path);
+        }
+    }
+}

@@ -1,0 +1,139 @@
+package com.bzl.basever.ui.adapter.autocontrol;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bzl.baseagv.bean.RoomBean;
+import com.bzl.basever.R;
+import com.bzl.basever.utils.ContainerUtils;
+
+import java.util.List;
+
+/**
+ * {@link com.bzl.basever.ui.fragment.wallpave.AutoControlFragment}
+ * 房间地图适配器
+ * <p>
+ * Created by dzb 2019/12/4
+ */
+public class AutoControlRoomAdapter extends RecyclerView.Adapter<AutoControlRoomAdapter.AutoControlRoomViewHolder> {
+    private List<RoomBean> mData;
+    private LayoutInflater mLayoutInflater;
+    private onItemClickListener mListener;
+    private RoomBean mLastSelectBean;
+
+    public AutoControlRoomAdapter(@NonNull List<RoomBean> data, Context context) {
+        mData = data;
+        mLayoutInflater = LayoutInflater.from(context);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        mListener = listener;
+    }
+
+    /**
+     * 选中第一个
+     */
+    public void setFirstItemCheck() {
+        if (ContainerUtils.isListEmpty(mData)) {
+            return;
+        }
+        RoomBean roomBean = mData.get(0);
+        roomBean.setSelection(true);
+        updateItem(roomBean, null);
+    }
+
+    /**
+     * 刷新选中item
+     */
+    public void updateItem(RoomBean currentBean, RoomBean lastBean) {
+        if (currentBean != null) {
+            currentBean.setSelection(true);
+            int currentPosition = mData.indexOf(currentBean);
+            notifyItemChanged(currentPosition);
+        }
+        if (lastBean != null) {
+            lastBean.setSelection(false);
+            int lastPosition = mData.indexOf(lastBean);
+            notifyItemChanged(lastPosition);
+        }
+        mLastSelectBean = currentBean;
+    }
+
+    /**
+     * 刷新列表数据
+     */
+    public void setData(@NonNull List<RoomBean> data) {
+        if (ContainerUtils.isListEmpty(data)) {
+            return;
+        }
+        mData = data;
+        mLastSelectBean = null;
+        notifyDataSetChanged();
+    }
+
+
+    @NonNull
+    @Override
+    public AutoControlRoomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AutoControlRoomViewHolder(mLayoutInflater.inflate(R.layout.item_room_task, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull AutoControlRoomViewHolder holder, int position) {
+        RoomBean bean = mData.get(position);
+        if (bean == null) {
+            return;
+        }
+        holder.roomNameTv.setText(bean.getName());
+        if (bean.isSelection()) {
+            holder.roomThumbnailIv.setBackgroundResource(R.mipmap.base_auto_room_select);
+        } else {
+            holder.roomThumbnailIv.setBackgroundResource(R.mipmap.base_auto_room);
+        }
+        if (bean.getBitmap() != null) {
+            holder.roomThumbnailIv.setImageBitmap(bean.getBitmap());
+        } else {
+            holder.roomThumbnailIv.setImageResource(R.mipmap.no_pictures_yet);
+        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bean == mLastSelectBean) {
+                    return;
+                }
+                updateItem(bean, mLastSelectBean);
+                if (mListener != null) {
+                    mListener.onItemClick(position, bean);
+                }
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return mData.isEmpty() ? 0 : mData.size();
+    }
+
+
+    public interface onItemClickListener {
+        void onItemClick(int position, @NonNull RoomBean bean);
+    }
+
+    class AutoControlRoomViewHolder extends RecyclerView.ViewHolder {
+        private ImageView roomThumbnailIv;
+        private TextView roomNameTv;
+
+        AutoControlRoomViewHolder(@NonNull View itemView) {
+            super(itemView);
+            roomThumbnailIv = itemView.findViewById(R.id.iv_item_room);
+            roomNameTv = itemView.findViewById(R.id.tv_name_item_room);
+        }
+    }
+}
