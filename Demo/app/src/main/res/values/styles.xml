@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--dialog theme-->
+    <style name="BaseDialogStyle" parent="Theme.AppCompat.Dialog">
+        <!--添加自定义属性-->
+    </style>
+
+    <style name="DialogStyle" parent="BaseDialogStyle">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item><!-- 在中间弹框、背后有遮罩的效果 -->
+    </style>
+
 </resources>
