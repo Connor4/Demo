@@ -1,5 +1,8 @@
 package com.connor.demo.designpattern;
 
+/**
+ * 责任链模式
+ */
 public class Chain {
 
     // 抽象处理基类

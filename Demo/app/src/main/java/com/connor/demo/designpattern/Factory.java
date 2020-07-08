@@ -1,5 +1,8 @@
 package com.connor.demo.designpattern;
 
+/**
+ * 工厂模式
+ */
 public class Factory {
     class PeopleInSchool {
         public void doSomething() {

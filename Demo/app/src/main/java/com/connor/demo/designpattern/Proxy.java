@@ -1,5 +1,8 @@
 package com.connor.demo.designpattern;
 
+/**
+ * 代理模式
+ */
 public class Proxy {
 
     abstract class Subject {

@@ -1,5 +1,6 @@
 package com.connor.demo.designpattern;
 
+// 装饰模式
 // 动态给对象添加一些额外的职责，通过利用SetComponent来对对象进行包装。
 // 这样每个装饰对象实现和使用这个对象就分离开了，每个对象只需要关心自己的功能，不需要关心如何添加到装饰链中
 public class Decorator {

@@ -6,6 +6,9 @@ import android.content.DialogInterface;
 
 import com.connor.demo.R;
 
+/**
+ * 建造者模式
+ */
 public class Builder {
 
     class Product {
