@@ -2,7 +2,13 @@ package com.connor.demo.designpattern;
 
 /**
  * 装饰模式
+ *定义的抽象Component作为具体对象ConcreteComponent和装饰内容基类AbsDecorator；
+ * 在抽象装饰基类AbsDecorator中定义setComponent()方法，用于传递需要装饰的对象Component进行，在Operation()中调用Component的Operation()。
+ * 装饰过程如main方法所示，最后调用对象去执行启动装饰。
+ * 将核心功能跟装饰功能区分开。
  *
+ * 适用场景：
+ * 为已有功能添加更多功能的一种方式，类似给核心功能添加一些附加功能。
  **/
 public class Decorator {
 
