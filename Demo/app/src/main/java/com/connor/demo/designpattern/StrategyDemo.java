@@ -8,7 +8,8 @@ package com.connor.demo.designpattern;
  * 将策略选择从客户端（main方法）迁移到Context类中
  */
 public class StrategyDemo {
-    public static void mian(String[] args) {
+
+    public static void main(String[] args) {
         // 基础策略模式
         Context context;
         context = new Context(new ConcreteStrategyA());
