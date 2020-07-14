@@ -61,6 +61,7 @@ class Context {
     }
 }
 
+/**----------------------------------------------------------------------**/
 // 结合简单工厂的策略配置
 class ContextWithFactory extends Strategy {
     Strategy mStrategy;
