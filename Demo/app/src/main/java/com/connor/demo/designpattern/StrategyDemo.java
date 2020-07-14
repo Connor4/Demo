@@ -8,7 +8,7 @@ package com.connor.demo.designpattern;
  * 将策略选择从客户端（main方法）迁移到Context类中
  *
  * 适用场景：
- * 处理一些列相同的任务，这些任务需要可以互相替换。
+ * 处理一系列相同的任务，这些任务需要可以互相替换。
  */
 public class StrategyDemo {
 
