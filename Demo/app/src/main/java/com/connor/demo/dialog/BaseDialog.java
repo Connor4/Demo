@@ -1,13 +1,13 @@
 package com.connor.demo.dialog;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.support.v7.app.AppCompatDialog;
 
 /**
  * 自定义Dialog的基类，用于对一致的操作，例如换肤管理
  * Created by dzb 2020/7/3
  */
-public class BaseDialog extends AppCompatDialog {
+public class BaseDialog extends Dialog {
     public BaseDialog(Context context) {
         super(context);
     }

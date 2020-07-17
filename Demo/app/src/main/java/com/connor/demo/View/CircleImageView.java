@@ -19,15 +19,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.RequiresApi;
 
 import com.connor.demo.R;
 
@@ -171,7 +172,8 @@ public class CircleImageView extends ImageView {
         return mBorderColor;
     }
 
-    public void setBorderColor(@ColorInt int borderColor) {
+    public void setBorderColor(@ColorInt
+                                       int borderColor) {
         if (borderColor == mBorderColor) {
             return;
         }
@@ -195,7 +197,8 @@ public class CircleImageView extends ImageView {
         invalidate();
     }
 
-    public void setCircleBackgroundColorResource(@ColorRes int circleBackgroundRes) {
+    public void setCircleBackgroundColorResource(@ColorRes
+                                                         int circleBackgroundRes) {
         setCircleBackgroundColor(getContext().getResources().getColor(circleBackgroundRes));
     }
 
@@ -251,7 +254,8 @@ public class CircleImageView extends ImageView {
     }
 
     @Override
-    public void setImageResource(@DrawableRes int resId) {
+    public void setImageResource(@DrawableRes
+                                         int resId) {
         super.setImageResource(resId);
         initializeBitmap();
     }

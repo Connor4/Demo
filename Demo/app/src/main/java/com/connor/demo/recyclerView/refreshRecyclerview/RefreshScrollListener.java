@@ -1,8 +1,8 @@
 package com.connor.demo.recyclerView.refreshRecyclerview;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Connor on  2019-06-21
@@ -11,7 +11,9 @@ public abstract class RefreshScrollListener extends RecyclerView.OnScrollListene
     private boolean mSlidingUp = false;
 
     @Override
-    public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+    public void onScrollStateChanged(
+            @NonNull
+                    RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
         LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
@@ -27,7 +29,9 @@ public abstract class RefreshScrollListener extends RecyclerView.OnScrollListene
     }
 
     @Override
-    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+    public void onScrolled(
+            @NonNull
+                    RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
         mSlidingUp = dy > 0;
     }

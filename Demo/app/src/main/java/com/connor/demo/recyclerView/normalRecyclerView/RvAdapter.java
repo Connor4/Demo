@@ -1,12 +1,13 @@
 package com.connor.demo.recyclerView.normalRecyclerView;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.connor.demo.R;
 
@@ -26,12 +27,16 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.TvViewHolder> {
 
     @NonNull
     @Override
-    public TvViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TvViewHolder onCreateViewHolder(
+            @NonNull
+                    ViewGroup parent, int viewType) {
         return new TvViewHolder(mLayoutInflater.inflate(R.layout.adapter_recyclerview, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final TvViewHolder holder, int position) {
+    public void onBindViewHolder(
+            @NonNull
+            final TvViewHolder holder, int position) {
         holder.tv.setText(mData.get(position));
         final View itemView = holder.itemView;
         if (mOnItemClickListener != null) {
