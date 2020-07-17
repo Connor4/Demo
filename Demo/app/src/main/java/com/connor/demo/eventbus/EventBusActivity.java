@@ -17,6 +17,7 @@ public class EventBusActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eventbus_main);
+        EventBus.getDefault().register(this);
         Button postBtn = findViewById(R.id.eventbus_btn);
         postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,5 +25,11 @@ public class EventBusActivity extends Activity {
                 EventBus.getDefault().post(new MessageEvent());
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
