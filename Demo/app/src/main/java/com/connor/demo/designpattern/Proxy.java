@@ -25,18 +25,18 @@ public class Proxy {
 
 }
 
-abstract class Subject {
+abstract class ProxySubject {
     abstract void request();
 }
 
-class RealSubject extends Subject {
+class RealSubject extends ProxySubject {
     @Override
     void request() {
         System.out.println("真实的请求");
     }
 }
 
-class ProxyClass extends Subject {
+class ProxyClass extends ProxySubject {
     RealSubject realSubject;
 
     @Override
