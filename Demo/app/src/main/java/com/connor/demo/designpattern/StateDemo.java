@@ -8,6 +8,8 @@ package com.connor.demo.designpattern;
  *
  * 使用场景：
  * 条件分支语句判断，但是不能太多判断。
+ *
+ * 与责任链有点类似，区别在哪里？
  */
 public class StateDemo {
     public static void main(String[] args) {
