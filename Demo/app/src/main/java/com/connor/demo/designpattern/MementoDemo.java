@@ -36,14 +36,17 @@ class Originator{
         return state;
     }
 
+    // 设置使用者的属性
     public void setState(String state) {
         this.state = state;
     }
 
+    // 设置属性备份
     public Memento createMemento() {
         return new Memento(state);
     }
 
+    // 设置使用者的属性备份
     public void setMemento(Memento memento) {
         state = memento.getState();
     }
