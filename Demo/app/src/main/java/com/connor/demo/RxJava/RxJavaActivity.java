@@ -18,7 +18,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class RxJavaActivity extends Activity {
-    private static final String TAG = "dzb";
+    private static final String TAG = RxJavaActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
