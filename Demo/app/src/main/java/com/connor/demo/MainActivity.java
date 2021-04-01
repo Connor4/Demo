@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.connor.demo.RxJava.RxJavaActivity;
+import com.connor.demo.aidl.AidlActivity;
 import com.connor.demo.eventbus.MessageEvent;
 import com.connor.demo.fragment.FragmentShowHideDemoActivity;
 import com.connor.demo.fragment.ViewpagerFragmentActivity;
@@ -20,7 +21,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends Activity {
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ViewpagerFragmentActivity.class));
+            }
+        });
+
+        findViewById(R.id.aidl_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AidlActivity.class));
             }
         });
 
