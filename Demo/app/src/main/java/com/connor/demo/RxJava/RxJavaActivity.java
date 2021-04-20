@@ -10,9 +10,14 @@ import androidx.annotation.Nullable;
 
 import com.connor.demo.R;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
@@ -98,12 +103,59 @@ public class RxJavaActivity extends Activity {
             public String apply(@NonNull Integer integer) throws Exception {
                 return "This is result " + integer + "\n";
             }
-        }).subscribe(new Consumer<String>() {
+        }).subscribe(new Observer<String>() {
             @Override
-            public void accept(@NonNull String s) throws Exception {
-                Log.d("RxJava", "consumer accept " + s);
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@NonNull String s) {
+
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
             }
         });
+    }
+
+    /**
+     * flatMap使用
+     */
+    @SuppressLint("CheckResult")
+    private void flatMap() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+            }
+        }).flatMap(new Function<Integer, ObservableSource<String>>() {
+            @Override
+            public ObservableSource<String> apply(@NonNull Integer integer) throws Exception {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < 3; i++) {
+                    list.add("I am value " + integer);
+                }
+                int delayTime = (int) (1 + Math.random() * 10);
+                return Observable.fromIterable(list).delay(delayTime, TimeUnit.MILLISECONDS);
+            }
+        }).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(@NonNull String s) throws Exception {
+                        Log.e(TAG, "flatMap : accept : " + s + "\n");
+                    }
+                });
     }
 
 //    private void loadImage() {
