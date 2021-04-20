@@ -1,5 +1,6 @@
 package com.connor.demo.RxJava;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +15,10 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class RxJavaActivity extends Activity {
@@ -32,9 +36,11 @@ public class RxJavaActivity extends Activity {
 
     }
 
+    /**
+     * 普通使用
+     */
     private void rx() {
         Observable.create(new ObservableOnSubscribe<Integer>() {
-
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
                 for (int i = 0; i < 5; i++) {
@@ -71,6 +77,33 @@ public class RxJavaActivity extends Activity {
                         Log.d(TAG, "onComplete  ");
                     }
                 });
+    }
+
+    /**
+     * map使用
+     */
+    @SuppressLint("CheckResult")
+    private void map() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+                e.onNext(4);
+            }
+        }).map(new Function<Integer, String>() {
+            @NonNull
+            @Override
+            public String apply(@NonNull Integer integer) throws Exception {
+                return "This is result " + integer + "\n";
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(@NonNull String s) throws Exception {
+                Log.d("RxJava", "consumer accept " + s);
+            }
+        });
     }
 
 //    private void loadImage() {
