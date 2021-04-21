@@ -12,7 +12,6 @@ import com.connor.demo.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -22,7 +21,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -36,6 +34,7 @@ public class RxJavaActivity extends Activity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flatMap();
             }
         });
 
@@ -145,15 +144,28 @@ public class RxJavaActivity extends Activity {
                 for (int i = 0; i < 3; i++) {
                     list.add("I am value " + integer);
                 }
-                int delayTime = (int) (1 + Math.random() * 10);
-                return Observable.fromIterable(list).delay(delayTime, TimeUnit.MILLISECONDS);
+                return Observable.fromIterable(list);
             }
-        }).subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<String>() {
+        })
+                .subscribe(new Observer<String>() {
                     @Override
-                    public void accept(@NonNull String s) throws Exception {
-                        Log.e(TAG, "flatMap : accept : " + s + "\n");
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull String s) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
     }
