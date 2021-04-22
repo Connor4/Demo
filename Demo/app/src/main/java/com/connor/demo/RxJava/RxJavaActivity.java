@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.connor.demo.R;
 
+import org.reactivestreams.Subscription;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.FlowableSubscriber;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -25,7 +28,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -39,10 +41,9 @@ public class RxJavaActivity extends Activity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flatMap();
+                backPressure();
             }
         });
-
     }
 
     /**
@@ -177,20 +178,41 @@ public class RxJavaActivity extends Activity {
 
     @SuppressLint("CheckResult")
     private void backPressure() {
-        Flowable.create(new FlowableOnSubscribe<String>() {
+        Flowable.create(new FlowableOnSubscribe<Integer>() {
             @Override
-            public void subscribe(@NonNull FlowableEmitter<String> e) throws Exception {
-                for (int i = 0; i < 1000000; i++) {
-                    e.onNext("i = " + i);
+            public void subscribe(FlowableEmitter<Integer> emitter) throws Exception {
+                for (int i = 0; i < 12; i++) {
+                    emitter.onNext(i);
                 }
             }
-        }, BackpressureStrategy.BUFFER)
+        }, BackpressureStrategy.MISSING)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<String>() {
+                .subscribe(new FlowableSubscriber<Integer>() {
                     @Override
-                    public void accept(@NonNull String s) throws Exception {
-                        Log.e("tag", "----> " + s);
+                    public void onSubscribe(@NonNull Subscription s) {
+                        // 开闸，用FlowableSubscriber必须调用此命令请求处理事件个数
+                        s.request(Long.MAX_VALUE);
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Log.e("TAG", "onNext=" + integer);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
     }
