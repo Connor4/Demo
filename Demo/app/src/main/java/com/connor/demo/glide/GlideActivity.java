@@ -20,7 +20,7 @@ public class GlideActivity extends Activity {
         findViewById(R.id.load_image).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "http://g.hiphotos.baidu.com/image/pic/item/e61190ef76c6a7efa0938dc7f3faaf51f2de669d.jpg";
+                String url = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1856787970,716725114&fm=26&gp=0.jpg";
                 Glide.with(GlideActivity.this).load(url).into(imageView);
             }
         });
