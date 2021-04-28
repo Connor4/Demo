@@ -21,7 +21,11 @@ public class GlideActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String url = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1856787970,716725114&fm=26&gp=0.jpg";
-                Glide.with(GlideActivity.this).load(url).into(imageView);
+                Glide.with(GlideActivity.this)
+                        .load(url)
+//                        .skipMemoryCache(true)
+//                        .diskCacheStrategy(DiskCacheStrategy.DATA)
+                        .into(imageView);
             }
         });
     }
