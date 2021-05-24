@@ -19,7 +19,7 @@ public class AnimatorActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animator_main);
-        valueAnimator();
+//        valueAnimator();
         objectAnimator();
     }
 
@@ -43,7 +43,15 @@ public class AnimatorActivity extends Activity {
     }
 
     private void objectAnimator() {
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mAnimateTarget, "alpha", 0f, 1f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mAnimateTarget, "alpha", 0f, 1f, 0f);
+        objectAnimator.setDuration(1000);
+        objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float curValue = (float)animation.getAnimatedValue();
+                Log.d(TAG,"curValue:"+curValue);
+            }
+        });
         objectAnimator.start();
     }
 }
