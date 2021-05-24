@@ -1,6 +1,5 @@
 package com.connor.demo.valueanimator;
 
-import android.animation.FloatEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -20,6 +19,8 @@ public class AnimatorActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animator_main);
+        valueAnimator();
+        objectAnimator();
     }
 
     private void valueAnimator() {
@@ -29,19 +30,19 @@ public class AnimatorActivity extends Activity {
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                int curValue = (int)animation.getAnimatedValue();
+                float curValue = (float)animation.getAnimatedValue();
                 Log.d(TAG,"curValue:"+curValue);
             }
         });
         valueAnimator.start();
 
-        // 2 使用估值器计算值
-        ValueAnimator valueAnimator1 = ValueAnimator.ofObject(new FloatEvaluator(), 0f, 1f);
-        valueAnimator1.setDuration(500);
-        valueAnimator1.start();
+//        // 2 使用估值器计算值
+//        ValueAnimator valueAnimator1 = ValueAnimator.ofObject(new FloatEvaluator(), 0f, 1f);
+//        valueAnimator1.setDuration(500);
+//        valueAnimator1.start();
     }
 
-    private void objectAniamtor() {
+    private void objectAnimator() {
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mAnimateTarget, "alpha", 0f, 1f);
         objectAnimator.start();
     }

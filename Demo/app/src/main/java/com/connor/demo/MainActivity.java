@@ -15,6 +15,7 @@ import com.connor.demo.glide.GlideActivity;
 import com.connor.demo.mvp.MvpActivity;
 import com.connor.demo.recyclerView.normalRecyclerView.NormalUseActivity;
 import com.connor.demo.recyclerView.refreshRecyclerview.RefreshActivity;
+import com.connor.demo.valueanimator.AnimatorActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -81,6 +82,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AidlActivity.class));
+            }
+        });
+        findViewById(R.id.animator_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AnimatorActivity.class));
             }
         });
 
