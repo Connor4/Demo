@@ -34,6 +34,12 @@
         android:text="rx" />
 
     <Button
+        android:id="@+id/rx_cache_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rx cache" />
+
+    <Button
         android:id="@+id/fragment_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

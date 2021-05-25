@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.connor.demo.RxJava.RxJavaActivity;
+import com.connor.demo.RxJava.cache.ConcatCacheActivity;
 import com.connor.demo.aidl.AidlActivity;
 import com.connor.demo.eventbus.MessageEvent;
 import com.connor.demo.fragment.FragmentShowHideDemoActivity;
@@ -22,7 +23,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends Activity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RxJavaActivity.class));
+            }
+        });
+
+        findViewById(R.id.rx_cache_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ConcatCacheActivity.class));
             }
         });
 

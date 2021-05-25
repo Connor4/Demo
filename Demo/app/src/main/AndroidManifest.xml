@@ -4,6 +4,8 @@
     package="com.connor.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -30,6 +32,7 @@
         <activity android:name=".fragment.FragmentShowHideDemoActivity" />
         <activity android:name=".fragment.ViewpagerFragmentActivity" />
         <activity android:name=".aidl.AidlActivity" />
+        <activity android:name=".RxJava.cache.ConcatCacheActivity"/>
 
         <service
             android:name=".aidl.BookManagerService"
