@@ -44,6 +44,18 @@ public class RxJavaActivity extends Activity {
                 backPressure();
             }
         });
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                map();
+            }
+        });
+        findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flatMap();
+            }
+        });
     }
 
     /**
@@ -101,12 +113,15 @@ public class RxJavaActivity extends Activity {
                 e.onNext(2);
                 e.onNext(3);
                 e.onNext(4);
+                e.onComplete();
             }
         }).map(new Function<Integer, String>() {
             @NonNull
             @Override
             public String apply(@NonNull Integer integer) throws Exception {
-                return "This is result " + integer + "\n";
+                String result = "This is result " + integer + "\n";
+                Log.d(TAG, "map apply  " + result);
+                return result;
             }
         }).subscribe(new Observer<String>() {
             @Override
@@ -116,7 +131,7 @@ public class RxJavaActivity extends Activity {
 
             @Override
             public void onNext(@NonNull String s) {
-
+                Log.d(TAG, "map receive  " + s);
             }
 
             @Override
@@ -126,7 +141,7 @@ public class RxJavaActivity extends Activity {
 
             @Override
             public void onComplete() {
-
+                Log.d(TAG, "map onComplete  ");
             }
         });
     }
@@ -142,13 +157,16 @@ public class RxJavaActivity extends Activity {
                 e.onNext(1);
                 e.onNext(2);
                 e.onNext(3);
+                e.onComplete();
             }
         }).flatMap(new Function<Integer, ObservableSource<String>>() {
             @Override
             public ObservableSource<String> apply(@NonNull Integer integer) throws Exception {
                 List<String> list = new ArrayList<>();
                 for (int i = 0; i < 3; i++) {
-                    list.add("I am value " + integer);
+                    String result = "I am value " + integer;
+                    Log.d(TAG, "flatMap apply " + result);
+                    list.add(result);
                 }
                 return Observable.fromIterable(list);
             }
@@ -161,7 +179,7 @@ public class RxJavaActivity extends Activity {
 
                     @Override
                     public void onNext(@NonNull String s) {
-
+                        Log.d(TAG, "flatMap receive " + s);
                     }
 
                     @Override
@@ -171,7 +189,7 @@ public class RxJavaActivity extends Activity {
 
                     @Override
                     public void onComplete() {
-
+                        Log.d(TAG, "flatMap onComplete ");
                     }
                 });
     }
