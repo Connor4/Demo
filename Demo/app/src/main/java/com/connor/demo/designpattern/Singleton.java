@@ -18,24 +18,28 @@ public class Singleton {
     }
 
     // 2双重同步锁
+    private volatile static Singleton Instance2;
+
     public static Singleton getInstance2() {
-        if (Instance == null) {
+        if (Instance2 == null) {
             synchronized (Singleton.class) {
-                if (Instance == null) {
-                    Instance = new Singleton();
+                if (Instance2 == null) {
+                    Instance2 = new Singleton();
                 }
             }
         }
-        return Instance;
+        return Instance2;
     }
 
     // 静态内部类 既实现线程安全，又避免了同步带来的性能影响
+    private static Singleton Instance3;
+
     private static class InstanceHolder {
-        private static Singleton Instance = new Singleton();
+        private static Singleton Instance3 = new Singleton();
     }
 
     public static Singleton getInstance3() {
-        return InstanceHolder.Instance;
+        return InstanceHolder.Instance3;
     }
 
     // 枚举类型单例
