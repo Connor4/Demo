@@ -7,6 +7,7 @@ public class Singleton {
 
     private Singleton() {
     }
+
     // 1懒汉式单例
     private static Singleton Instance;
 
@@ -31,7 +32,7 @@ public class Singleton {
         return Instance2;
     }
 
-    // 静态内部类 既实现线程安全，又避免了同步带来的性能影响
+    // 3静态内部类 既实现线程安全，又避免了同步带来的性能影响
     private static Singleton Instance3;
 
     private static class InstanceHolder {
@@ -42,30 +43,32 @@ public class Singleton {
         return InstanceHolder.Instance3;
     }
 
-    // 枚举类型单例
-    public class ClassFactory{
+}
 
-       private  enum MyEnumSingleton{
-            singletonFactory;
+// 4枚举类型单例
+class ClassFactory {
 
-            private MySingleton instance;
+    private enum MyEnumSingleton {
+        singletonFactory;
 
-            private MyEnumSingleton(){//枚举类的构造方法在类加载是被实例化
-                instance = new MySingleton();
-            }
+        private MySingleton instance;
 
-            public MySingleton getInstance(){
-                return instance;
-            }
+        private MyEnumSingleton() {//枚举类的构造方法在类加载是被实例化
+            instance = new MySingleton();
         }
 
-        public static MySingleton getInstance(){
-            return MyEnumSingleton.singletonFactory.getInstance();
+        public MySingleton getInstance() {
+            return instance;
         }
     }
 
-   class MySingleton{//需要获实现单例的类，比如数据库连接Connection
-        public MySingleton(){}
+    public static MySingleton getInstance() {
+        return MyEnumSingleton.singletonFactory.getInstance();
     }
+}
 
+class MySingleton {//需要获实现单例的类，比如数据库连接Connection
+
+    public MySingleton() {
+    }
 }
