@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
  */
 public class ParentLayout extends RelativeLayout {
     private final String TAG = "dzb";
+
     public ParentLayout(Context context) {
         super(context);
     }
@@ -26,15 +27,15 @@ public class ParentLayout extends RelativeLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         // TODO Auto-generated method stub
-        switch(ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"LinearLayout:dispatchTouchEvent-->DOWN");
+                Log.d(TAG, "LinearLayout:dispatchTouchEvent-->DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"LinearLayout:dispatchTouchEvent-->MOVE");
+                Log.d(TAG, "LinearLayout:dispatchTouchEvent-->MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG,"LinearLayout:dispatchTouchEvent-->UP");
+                Log.d(TAG, "LinearLayout:dispatchTouchEvent-->UP");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -44,38 +45,35 @@ public class ParentLayout extends RelativeLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         // TODO Auto-generated method stub
-        switch(ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"LinearLayout:onInterceptTouchEvent-->DOWN");
+                Log.d(TAG, "LinearLayout:onInterceptTouchEvent-->DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"LinearLayout:onInterceptTouchEvent-->MOVE");
-                return true;
-//                break;
+                Log.d(TAG, "LinearLayout:onInterceptTouchEvent-->MOVE");
+                break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG,"LinearLayout:onInterceptTouchEvent-->UP");
+                Log.d(TAG, "LinearLayout:onInterceptTouchEvent-->UP");
                 break;
         }
-//        return true;
-                return super.onInterceptTouchEvent(ev);
+        return super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // TODO Auto-generated method stub
-        switch(event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"LinearLayout:onTouchEvent-->DOWN");
+                Log.d(TAG, "LinearLayout:onTouchEvent-->DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"LinearLayout:onTouchEvent-->MOVE");
+                Log.d(TAG, "LinearLayout:onTouchEvent-->MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG,"LinearLayout:onTouchEvent-->UP");
+                Log.d(TAG, "LinearLayout:onTouchEvent-->UP");
                 break;
         }
         return super.onTouchEvent(event);
-//        return true;
     }
 
 }

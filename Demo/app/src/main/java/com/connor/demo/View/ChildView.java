@@ -26,44 +26,38 @@ public class ChildView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    public ChildView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         // TODO Auto-generated method stub
-        switch(ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"MyTextView:dispatchTouchEvent-->DOWN");
-//                break;
+                Log.d(TAG, "MyTextView:dispatchTouchEvent-->DOWN");
+                break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"MyTextView:dispatchTouchEvent-->MOVE");
+                Log.d(TAG, "MyTextView:dispatchTouchEvent-->MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG,"MyTextView:dispatchTouchEvent-->UP");
+                Log.d(TAG, "MyTextView:dispatchTouchEvent-->UP");
                 break;
         }
-//        return super.dispatchTouchEvent(ev);
-        return true;
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // TODO Auto-generated method stub
-        switch(event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"MyTextView:onTouchEvent-->DOWN");
+                Log.d(TAG, "MyTextView:onTouchEvent-->DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"MyTextView:onTouchEvent-->MOVE");
+                Log.d(TAG, "MyTextView:onTouchEvent-->MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG,"MyTextView:onTouchEvent-->UP");
+                Log.d(TAG, "MyTextView:onTouchEvent-->UP");
                 break;
         }
-//        return super.onTouchEvent(event);
-        return true;
+        return super.onTouchEvent(event);
     }
 
 }
