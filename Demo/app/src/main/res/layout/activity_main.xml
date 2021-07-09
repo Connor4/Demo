@@ -62,4 +62,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="animator" />
+
+    <com.connor.demo.View.ParentLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/colorPrimary">
+
+        <com.connor.demo.View.ChildView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:background="@color/colorAccent" />
+    </com.connor.demo.View.ParentLayout>
 </LinearLayout>

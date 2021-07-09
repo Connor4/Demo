@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.connor.demo.RxJava.RxJavaActivity;
@@ -23,6 +24,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends Activity {
+    private final String TAG = "dzb";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,40 @@ public class MainActivity extends Activity {
     public void onMessageEvent(MessageEvent event) {
         /* Do something */
         Log.d("TAG", "receive event from EventBusActivity");
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        // TODO Auto-generated method stub
+        switch(ev.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG,"MainActivity:dispatchTouchEvent-->DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG,"MainActivity:dispatchTouchEvent-->MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG,"MainActivity:dispatchTouchEvent-->UP");
+                break;
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // TODO Auto-generated method stub
+        switch(event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG,"MainActivity:onTouchEvent-->DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG,"MainActivity:onTouchEvent-->MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG,"MainActivity:onTouchEvent-->UP");
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 
 }
