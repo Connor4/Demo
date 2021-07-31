@@ -33,8 +33,6 @@ public class Singleton {
     }
 
     // 3静态内部类 既实现线程安全，又避免了同步带来的性能影响
-    private static Singleton Instance3;
-
     private static class InstanceHolder {
         private static Singleton Instance3 = new Singleton();
     }
