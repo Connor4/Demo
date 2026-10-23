@@ -43,3 +43,25 @@ fun main() {
     
     println(stops)
 }
+
+
+import java.util.*
+
+fun main() {
+    val scanner = Scanner(System.`in`)
+    val n = scanner.nextInt()
+    var current = IntArray(n) { scanner.nextInt() }
+    val days = scanner.nextInt()
+
+    repeat(days) {
+        val next = IntArray(n)
+        for (i in 0 until n) {
+            val left = if (i == 0) 0 else current[i - 1]
+            val right = if (i == n - 1) 0 else current[i + 1]
+            next[i] = if (left == right) 0 else 1
+        }
+        current = next
+    }
+
+    println(current.joinToString(" "))
+}
